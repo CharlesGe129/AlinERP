@@ -1,3 +1,5 @@
 .idea
 AlinERP/__pycache__
-
+*/__pycache__/*
+*.pyc
+.gitignore.swp

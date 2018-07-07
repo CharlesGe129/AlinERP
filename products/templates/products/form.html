@@ -1,0 +1,8 @@
+{% csrf_token %}
+<h4>Name:</h4>
+<input name="name" value="{{ product.name }}"><br>
+
+<h4>Comment:</h4>
+<input name="comment" value="{{ product.comment }}"><br><br>
+
+<input type="submit" value="Submit">

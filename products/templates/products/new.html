@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Products</title>
+    <style>
+        input {
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Create Products</h1>
+
+<form action="{% url 'products:new' %}" method="post">
+    {% include './form.html' %}
+</form>
+
+<br><a href="{% url 'products:index' %}">Back</a>
+
+</body>
+</html>
