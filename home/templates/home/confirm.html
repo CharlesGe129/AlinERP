@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+
+<h1>{{ msg }}</h1>
+<a href="{{ back }}">Go back</a>
+
+{% for key, value in data.items %}
+<h3>{{ key }}: {{ value }}</h3>
+{% endfor %}
+
+</body>
+</html>

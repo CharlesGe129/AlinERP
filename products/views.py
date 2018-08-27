@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Product
+from django.forms.models import model_to_dict
 
 
 def index(request):
@@ -15,12 +16,12 @@ def index_context(products):
 
 
 def edit(request, product_id):
-    msg = ''
     if request.method == 'POST':
-        edit_product(request.POST, product_id)
+        product = edit_product(request.POST, product_id)
         msg = 'Product is successfully edited.'
-        return redirect('/products', {})
-    return render(request, 'products/edit.html', edit_context(product_id))
+        return render(request, 'home/confirm.html', {'msg': msg, 'back': '/products', 'data': product.values()[0]})
+    else:
+        return render(request, 'products/edit.html', edit_context(product_id))
 
 
 def edit_context(product_id, msg=''):
@@ -28,9 +29,11 @@ def edit_context(product_id, msg=''):
 
 
 def edit_product(params, product_id):
-    Product.objects.filter(id=product_id).update(
+    product = Product.objects.filter(id=product_id)
+    product.update(
         name=params['name'],
         comment=params['comment'])
+    return product
 
 
 def new(request):
